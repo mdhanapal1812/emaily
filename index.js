@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 
 app.get('/',(req,res) =>{
-    res.send({hi:'there'});
+    res.send({hi:'bye'});
 });
 
 /** If we are running in production environment , then the port is given by heroku only in the last
