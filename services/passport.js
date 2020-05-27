@@ -29,26 +29,25 @@ passport.use(new GoogleStrategy({
                                     proxy: true
                                 },
                                 /** At this point after callback we will have access token and user's profile information*/
-                                (accessToken, refereshToken, profile, done) => {
+                                async (accessToken, refereshToken, profile, done) => {
 
                                     /** Note this could be put in daos section */
-                                    User.findOne({googleId: profile.id})
+                                    const existingUser = await User.findOne({googleId: profile.id});
                                     /** Existing user might represent one mongoose record or nill if no user record was found*/
-                                        .then((existingUser) => {
-                                            if (existingUser) {
-                                                /** We already have an user with same record ID so not creating
-                                                 * a new one.
-                                                 */
-                                                /** passport need to know that we are finished. So we need to call done.
-                                                 * null means no error.
-                                                 * 2nd argument is the record.
-                                                 */
-                                                done(null, existingUser);
-                                            } else {
-                                                /** This is to create a new user every time and save it to the model */
-                                                new User({googleId: profile.id}).save()
-                                                    .then(user => done(null, user));
-                                            }
-                                        })
+
+                                    if (existingUser) {
+                                        /** We already have an user with same record ID so not creating
+                                         * a new one.
+                                         */
+                                        /** passport need to know that we are finished. So we need to call done.
+                                         * null means no error.
+                                         * 2nd argument is the record.
+                                         */
+                                        return done(null, existingUser);
+                                    }
+                                    /** This is to create a new user every time and save it to the model */
+                                    const user = await new User({googleId: profile.id}).save();
+                                    done(null, user);
+
                                 }
 ));
