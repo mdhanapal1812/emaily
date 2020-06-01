@@ -10,6 +10,7 @@ const keys = require('./config/keys');
  *  have our user schema created first .
  */
 require('./model/User');
+require('./model/Survey');
 require('./services/passport');
 
 
@@ -34,6 +35,8 @@ app.use(passport.session());
 // authRoutes(app);
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
+
 
 /** For making heroku work on production , ie , if there are routes in react then heroku need to
  * fetch the build directory's main.js ..if its not found then it will use the index.html.
