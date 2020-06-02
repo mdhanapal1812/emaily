@@ -1,5 +1,6 @@
 const _ = require("lodash");
-/* const Path = require("path-parser"); */
+const { Path } = require("path-parser");
+//URL is default and already installed.
 const { URL } = require("url");
 const mongoose = require("mongoose");
 const requireLogin = require("../middleware/requireLogin");
@@ -18,11 +19,11 @@ module.exports = (app) => {
     res.send(surveys);
   });
 
-  /*   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
+  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
     res.send("Thanks for voting!");
-  }); */
+  });
 
-  /*  app.post("/api/surveys/webhooks", (req, res) => {
+  app.post("/api/surveys/webhooks", (req, res) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
 
     _.chain(req.body)
@@ -52,7 +53,7 @@ module.exports = (app) => {
       .value();
 
     res.send({});
-  }); */
+  });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
