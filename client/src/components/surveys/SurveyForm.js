@@ -1,3 +1,4 @@
+// SurveyForm shows a form for a user to add input
 import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
@@ -6,7 +7,7 @@ import SurveyField from "./SurveyField";
 import validateEmails from "../../utils/validateEmails";
 import formFields from "./formFields";
 
-class SurveyForm extends React.Component {
+class SurveyForm extends Component {
   renderFields() {
     return _.map(formFields, ({ label, name }) => {
       return (

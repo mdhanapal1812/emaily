@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter } from "react-router-dom";
 import Landing from "./Landing";
 import Header from "./Header";
 import DashBoard from "./DashBoard";
@@ -16,15 +16,15 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div className='container'>
+      <div className='container'>
+        <BrowserRouter>
           <Header />
 
           <Route path='/' exact component={Landing} />
           <Route path='/surveys' exact component={DashBoard} />
           <Route path='/surveys/new' exact component={SurveyNew} />
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </div>
     );
   }
 }
