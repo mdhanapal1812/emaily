@@ -10,11 +10,16 @@ class Header extends React.Component {
         return;
       case false:
         return (
-          <li
-            class='nav-item'
-            style={{ margin: "0 10px", color: " #ffcc00", fontWeight: "40px" }}
-          >
-            <a href='/auth/google' class='nav-link js-scroll-trigger'>
+          <li class='nav-item'>
+            <a
+              href='/auth/google'
+              class='nav-link js-scroll-trigger'
+              style={{
+                margin: "0 10px",
+                color: " #ffcc00",
+                fontWeight: "40px",
+              }}
+            >
               Login With Google
             </a>
           </li>
@@ -51,7 +56,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <nav class='navbar navbar-expand-lg navbar-dark fixed-top' id='mainNav'>
+      <nav class='navbar navbar-expand-lg navbar-dark' id='mainNav'>
         <div class='container'>
           <Link
             to={this.props.auth ? "/surveys" : "/"}

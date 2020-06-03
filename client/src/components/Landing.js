@@ -13,7 +13,7 @@ const Landing = () => {
             class='btn btn-primary btn-xl text-uppercase js-scroll-trigger'
             href='/auth/google'
           >
-            Login To start !
+            Hi , Start Collecting Your feedbacks !
           </a>
         </div>
       </div>
