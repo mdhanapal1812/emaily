@@ -19,12 +19,12 @@ module.exports = (app) => {
     res.send(surveys);
   });
 
-  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
+  app.get("api/surveys/:surveyId/:choice", (req, res) => {
     res.send("Thanks for voting!");
   });
 
-  app.post("/api/surveys/webhooks", (req, res) => {
-    const p = new Path("/api/surveys/:surveyId/:choice");
+  app.post("api/surveys/webhooks", (req, res) => {
+    const p = new Path("api/surveys/:surveyId/:choice");
 
     _.chain(req.body)
       .map(({ email, url }) => {
