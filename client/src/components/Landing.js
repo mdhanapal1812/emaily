@@ -4,8 +4,11 @@ const Landing = () => {
   return (
     <header class='masthead'>
       <div class='container'>
-        <div class='masthead-subheading' style={{ color: "#ffcc00" }}>
-          Feedback Collector
+        <div
+          class='masthead-subheading'
+          style={{ color: "#ffcc00", background: "white", opacity: "0.8" }}
+        >
+          Improve the quality of your products
         </div>
         <div
           class='masthead-heading'
