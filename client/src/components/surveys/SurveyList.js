@@ -14,15 +14,15 @@ class SurveyList extends React.Component {
         return (
           <div className='card darken-1' key={survey._id}>
             <div className='card-content'>
-              <span className='card-title'>{survey.title}</span>
-              <p>{survey.body}</p>
+              <span className='card-title'> Title : {survey.title}</span>
+              <p>Content : {survey.body}</p>
               <p className='right'>
-                Sent On: {new Date(survey.dateSent).toLocaleDateString()}
+                Date sent: {new Date(survey.dateSent).toLocaleDateString()}
               </p>
             </div>
             <div className='card-action'>
-              <a>Yes: {survey.yes}</a>
-              <a>No: {survey.no}</a>
+              <a> Liked: {survey.yes}</a>
+              <a>Disliked: {survey.no}</a>
             </div>
           </div>
         );

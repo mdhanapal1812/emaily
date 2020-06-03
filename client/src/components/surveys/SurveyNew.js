@@ -24,7 +24,11 @@ class SurveyNew extends Component {
   }
 
   render() {
-    return <div>{this.renderContent()}</div>;
+    return (
+      <section class='page-section' id='services'>
+        <div className='container'>{this.renderContent()}</div>
+      </section>
+    );
   }
 }
 
