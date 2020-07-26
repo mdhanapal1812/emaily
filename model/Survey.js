@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const RecipientSchema = require("./Recipient");
 
+/**
+ * This collection stores the surveys information.
+ * One to Many relationship between User and Survey (One user can contain many surveys)
+ * Seperate recipients sub-document is created because for every recipient we need to store the response.
+ */
 const surveySchema = new Schema({
   title: String,
   body: String,

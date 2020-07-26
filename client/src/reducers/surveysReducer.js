@@ -1,5 +1,8 @@
 import { FETCH_SURVEYS } from "../actions/types";
 
+/**
+ * This reducer represents the surveys reducer.
+ */
 export default function (state = [], action) {
   switch (action.type) {
     case FETCH_SURVEYS:

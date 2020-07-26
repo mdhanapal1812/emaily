@@ -1,5 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
+/**
+ * CookieSession to manage cookies in our application.
+ */
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
@@ -15,6 +18,7 @@ require("./services/passport");
 mongoose.Promise = global.Promise;
 
 mongoose.connect(keys.mongoURI);
+
 /** creates a new application by running an express server app.
  *   This app will listen for incoming request and route them to different route handlers.
  *   All route handlers will be registered with this app.*/
@@ -23,15 +27,20 @@ app.use(bodyParser.json());
 
 app.use(
   cookieSession({
+    /**
+     * Last for 30 days
+     */
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey],
   })
 );
 
+/**
+ * Below configurations will make passport use cookies.
+ */
 app.use(passport.initialize());
 app.use(passport.session());
-//const authRoutes = require('./routes/authRoutes');
-// authRoutes(app);
+
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 require("./routes/surveyRoutes")(app);
@@ -50,9 +59,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-/** If we are running in production environment , then the port is given by heroku only in the last
- * second so we are telling to look at the underlying environment to look for a port.
- * If it is development environment , then we are going to look at port 5000.
+/**
+ * Changing the ports based on the production/development environment.
  */
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

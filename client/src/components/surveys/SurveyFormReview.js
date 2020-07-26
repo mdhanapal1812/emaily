@@ -6,7 +6,15 @@ import formFields from "./formFields";
 import { withRouter } from "react-router-dom";
 import * as actions from "../../actions";
 
+/**
+ * This component is used to allow the user to review the form.
+ * OnCancel is passed from parent , formValues is taken from store,
+ */
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
+
+  /**
+   * Displaying the contents of the form along with its values , for user to review.
+   */
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
       <div key={name}>
@@ -16,6 +24,9 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
     );
   });
 
+  /**
+   * on clicking submit  , the submitSurvey API is called to store the survey to the backend
+   */
   return (
     <section class='page-section' id='services' style={{ background: "black" }}>
       <div className='container' style={{ background: "black" }}>
@@ -38,8 +49,17 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   );
 };
 
+/**
+ * To pull the form values entered by the user from redux-form store.
+ */
 function mapStateToProps(state) {
   return { formValues: state.form.surveyForm.values };
 }
 
+/**
+ * withRouter is used to get access to history , so that 
+ * after the submit , user can be redirected.
+ * So after a response is received from submitSurvey action creator , 
+ * it will redirect to dashboard.
+ */
 export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));

@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * This component represents the landing page.
+ */
 const Landing = () => {
   return (
     <header class='masthead'>

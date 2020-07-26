@@ -1,5 +1,9 @@
 const keys = require("../../config/keys");
 
+/**
+ * This module represents the survey template.
+ * redirectDomain represents the place where the user has to be redirected after providing feedback.
+ */
 module.exports = (survey) => {
   return `
     <html>

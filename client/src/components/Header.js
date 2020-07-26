@@ -3,13 +3,24 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Payment from "./Payment";
 
+/**
+ * This component is to display the header in the application.
+ */
 class Header extends React.Component {
   renderContent() {
+
+    /**
+     * Based on whether the user is logged in or not , 
+     * We display the corresponding options in the header.
+     */
     switch (this.props.auth) {
       case null:
         return;
       case false:
         return (
+          /**
+           * Login With google button , redirects the user to the sign-in page.
+           */
           <li class='nav-item'>
             <a
               href='/auth/google'
@@ -76,6 +87,10 @@ class Header extends React.Component {
   }
 }
 
+/**
+ * mapStateToProps function returns the entire state objects
+ * out of the redux store.
+ */
 const mapStateToProps = (state) => {
   return { auth: state.auth };
 };
